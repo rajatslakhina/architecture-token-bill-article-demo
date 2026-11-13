@@ -42,7 +42,7 @@ No other setup: the app uses the library through a local Swift package reference
 ## Verification status
 
 - `swift build -Xswiftc -warnings-as-errors`: clean. `swift test`: 20/20 passing (Xcode 27.2, Swift 6.4.2, macOS).
-- Simulator: built with `xcodebuild` and run on a fresh iPhone 18 Pro (iOS 27.2) simulator; four launches through launch arguments, each followed by a check that the process is still alive; the screenshots in `Demo/Screenshots/` come from those runs.
+- Simulator: built with `xcodebuild` and run on an iPhone 18 Pro (iOS 27.2) simulator created for this demo; four launches through launch arguments, each followed by a check that the process is still alive; the screenshots in `Demo/Screenshots/` come from those runs.
 - CI (`.github/workflows/ci.yml`) is set up to repeat both on GitHub's macOS runners.
 
 ## Sources
