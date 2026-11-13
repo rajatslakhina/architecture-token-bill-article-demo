@@ -2,7 +2,7 @@
 
 **What does an iOS architecture cost when a coding agent writes most of the code?** This repo measures one part of that bill for real and gives a team a small harness for the rest.
 
-Article: (added after publish)
+Article: [Your iOS Architecture Now Has a Token Bill. Read the Error Bars Before You Rewrite.](https://medium.com/@er.rajatlakhina/your-ios-architecture-now-has-a-token-bill-read-the-error-bars-before-you-rewrite-8f4ccc4ec7b5) (Medium)
 
 <p align="center"><img src="Demo/Screenshots/footprint.png" width="300" alt="Demo app on iPhone 18 Pro Simulator: one change, an Unread only filter, needs about 488 tokens of file context in plain SwiftUI, 694 in MVVM and 933 in a reducer architecture"> <img src="Demo/Screenshots/cost-ranges-hono-selected.png" width="300" alt="Demo app showing Nolan Lawson's published per-run costs for 12 JavaScript frameworks with min–max ranges: 6 of 66 pairs are separable, and Hono+htmx separates only from SvelteKit and Gracile+Lit"></p>
 
@@ -43,7 +43,7 @@ No other setup: the app uses the library through a local Swift package reference
 
 - `swift build -Xswiftc -warnings-as-errors`: clean. `swift test`: 20/20 passing (Xcode 27.2, Swift 6.4.2, macOS).
 - Simulator: built with `xcodebuild` and run on an iPhone 18 Pro (iOS 27.2) simulator created for this demo; four launches through launch arguments, each followed by a check that the process is still alive; the screenshots in `Demo/Screenshots/` come from those runs.
-- CI (`.github/workflows/ci.yml`) is set up to repeat both on GitHub's macOS runners.
+- CI (`.github/workflows/ci.yml`) repeats both on GitHub's macOS runners.
 
 ## Sources
 
