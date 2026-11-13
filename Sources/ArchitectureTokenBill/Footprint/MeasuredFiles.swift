@@ -2,7 +2,7 @@
 public enum MeasuredFiles {
     public static let all: [FileFootprint] = [
         FileFootprint(path: "Sources/ArchitectureTokenBill/Features/Shared/Article.swift", nonBlankLines: 17, characters: 683),
-        FileFootprint(path: "Sources/ArchitectureTokenBill/Features/Plain/PlainReadingListView.swift", nonBlankLines: 23, characters: 828),
+        FileFootprint(path: "Sources/ArchitectureTokenBill/Features/Plain/PlainReadingListView.swift", nonBlankLines: 35, characters: 1266),
         FileFootprint(path: "Sources/ArchitectureTokenBill/Features/MVVM/ReadingListService.swift", nonBlankLines: 13, characters: 496),
         FileFootprint(path: "Sources/ArchitectureTokenBill/Features/MVVM/ReadingListViewModel.swift", nonBlankLines: 17, characters: 647),
         FileFootprint(path: "Sources/ArchitectureTokenBill/Features/MVVM/MVVMReadingListView.swift", nonBlankLines: 27, characters: 947),

@@ -4,15 +4,15 @@
 
 Article: (added after publish)
 
-<p align="center"><img src="Demo/Screenshots/footprint.png" width="300" alt="Demo app on iPhone 18 Pro Simulator: one change, an Unread only filter, needs about 378 tokens of file context in plain SwiftUI, 694 in MVVM and 933 in a reducer architecture"> <img src="Demo/Screenshots/cost-ranges-hono-selected.png" width="300" alt="Demo app showing Nolan Lawson's published per-run costs for 12 JavaScript frameworks with min–max ranges: 6 of 66 pairs are separable, and Hono+htmx separates only from SvelteKit and Gracile+Lit"></p>
+<p align="center"><img src="Demo/Screenshots/footprint.png" width="300" alt="Demo app on iPhone 18 Pro Simulator: one change, an Unread only filter, needs about 488 tokens of file context in plain SwiftUI, 694 in MVVM and 933 in a reducer architecture"> <img src="Demo/Screenshots/cost-ranges-hono-selected.png" width="300" alt="Demo app showing Nolan Lawson's published per-run costs for 12 JavaScript frameworks with min–max ranges: 6 of 66 pairs are separable, and Hono+htmx separates only from SvelteKit and Gracile+Lit"></p>
 
 ## What's in it
 
-**1. The same feature in three architectures** (`Sources/ArchitectureTokenBill/Features/`): a reading list that loads seed data, toggles read state and saves after every toggle.
+**1. The same feature in three architectures** (`Sources/ArchitectureTokenBill/Features/`): a reading list that loads seed data, toggles read state and saves after every toggle. All three draw the same row and behave the same.
 
 | Architecture | Files an agent loads to add an "Unread only" filter | Non-blank lines | ≈ Tokens |
 |---|---|---:|---:|
-| Plain SwiftUI | `PlainReadingListView` (edit), `Article` | 40 | 378 |
+| Plain SwiftUI | `PlainReadingListView` (edit), `Article` | 52 | 488 |
 | MVVM | `ReadingListViewModel`, `MVVMReadingListView` (edit), `ReadingListService`, `Article` | 74 | 694 |
 | Reducer | `ReadingListFeature`, `ReducerReadingListView` (edit), `Store`, `Article` | 97 | 933 |
 
@@ -22,7 +22,7 @@ The numbers live in `MeasuredFiles.swift`, and `FootprintTests` re-measures the 
 
 ```swift
 let summaries = ArchitectureSummary.summarize(runs)   // median + min–max per architecture
-summaries[0].costPerPassingRun                          // all spend ÷ runs that passed conformance
+summaries.first?.costPerPassingRun                      // all spend ÷ runs that passed conformance
 
 let pairs = RangeComparison.separablePairs(items)       // only pairs whose ranges don't overlap
 ```
@@ -41,9 +41,9 @@ No other setup: the app uses the library through a local Swift package reference
 
 ## Verification status
 
-- `swift build -Xswiftc -warnings-as-errors`: clean. `swift test`: 20/20 passing (Xcode 26 toolchain on macOS).
+- `swift build -Xswiftc -warnings-as-errors`: clean. `swift test`: 20/20 passing (Xcode 27.2, Swift 6.4.2, macOS).
 - Simulator: built with `xcodebuild` and run on a fresh iPhone 18 Pro (iOS 27.2) simulator; four launches through launch arguments, each followed by a check that the process is still alive; the screenshots in `Demo/Screenshots/` come from those runs.
-- CI (`.github/workflows/ci.yml`) repeats both on GitHub's macOS runners.
+- CI (`.github/workflows/ci.yml`) is set up to repeat both on GitHub's macOS runners.
 
 ## Sources
 

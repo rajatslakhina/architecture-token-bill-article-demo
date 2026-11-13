@@ -13,15 +13,28 @@ public struct PlainReadingListView: View {
 
     private var unreadCount: Int { articles.filter { !$0.isRead }.count }
 
+    private func toggleRead(id: Int) {
+        guard let index = articles.firstIndex(where: { $0.id == id }) else { return }
+        articles[index].isRead.toggle()
+        save(articles)
+    }
+
     public var body: some View {
         List {
             Section("\(unreadCount) unread") {
-                ForEach($articles) { $article in
-                    Toggle(article.title, isOn: $article.isRead)
+                ForEach(articles) { article in
+                    Button {
+                        toggleRead(id: article.id)
+                    } label: {
+                        HStack {
+                            Text(article.title)
+                            Spacer()
+                            Image(systemName: article.isRead ? "checkmark.circle.fill" : "circle")
+                        }
+                    }
                 }
             }
         }
-        .onChange(of: articles) { _, newValue in save(newValue) }
     }
 }
 #endif
